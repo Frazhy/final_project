@@ -20,11 +20,11 @@
                     <uri>model://grey_wall</uri>
                 </include>
             </model>
-            <pose>20 3.3 0 0 0 0</pose>
+            <pose>10 3.3 0 0 0 0</pose>
             <box>
-                <size>5 40 10</size>
+                <size>5 20 10</size>
             </box>
-            <model_count>6</model_count>
+            <model_count>3</model_count>
             <distribution>
                 <type>linear-y</type>
             </distribution>
@@ -38,11 +38,11 @@
                     <uri>model://grey_wall</uri>
                 </include>
             </model>
-            <pose>-20 3.3 0 0 0 0</pose>
+            <pose>-10 3.3 0 0 0 0</pose>
             <box>
-                <size>5 40 10</size>
+                <size>5 20 10</size>
             </box>
-            <model_count>6</model_count>
+            <model_count>3</model_count>
             <distribution>
                 <type>linear-y</type>
             </distribution>
@@ -55,11 +55,11 @@
                     <uri>model://grey_wall</uri>
                 </include>
             </model>
-            <pose>3.3 20 0 0 0 0</pose>
+            <pose>3.3 10 0 0 0 0</pose>
             <box>
-                <size>40 5 10</size>
+                <size>20 5 10</size>
             </box>
-            <model_count>6</model_count>
+            <model_count>3</model_count>
             <distribution>
                 <type>linear-x</type>
             </distribution>
@@ -72,15 +72,84 @@
                     <uri>model://grey_wall</uri>
                 </include>
             </model>
-            <pose>3.3 -20 0 0 0 0</pose>
+            <pose>3.3 -10 0 0 0 0</pose>
             <box>
-                <size>40 5 10</size>
+                <size>20 5 10</size>
             </box>
-            <model_count>6</model_count>
+            <model_count>3</model_count>
             <distribution>
                 <type>linear-x</type>
             </distribution>
         </population>
+
+        <population name="obstaculos_population">
+            <model name="obstaculo">
+                <include>
+                    <static>true</static>
+                    <uri>model://obstaculo</uri>
+                </include>
+            </model>
+            <pose>-1 0.8 0 0 0 0</pose>
+            <box>
+                <size>11 11 2</size>
+            </box>
+            <model_count>4</model_count>
+            <distribution>
+                <type>uniform</type>
+            </distribution>
+        </population>
+
+        <model name="Obstaculo_mov1">
+            <pose>-7 8.5 0.1 0 0 0</pose>
+            <static>false</static>
+            <include>
+                <uri>model://obstaculo</uri>
+            </include>
+
+            <plugin name="mov_plugin" filename="libmov_plugin.so">
+                <velocity_x>0.1</velocity_x>
+                <iterations>120000</iterations>
+            </plugin>
+        </model>
+
+        <model name="Obstaculo_mov2">
+            <pose>5 -6.9 0.1 0 0 0</pose>
+            <static>false</static>
+            <include>
+                <uri>model://obstaculo</uri>
+            </include>
+
+            <plugin name="mov_plugin" filename="libmov_plugin.so">
+                <velocity_x>-0.1</velocity_x>
+                <iterations>120000</iterations>
+            </plugin>
+        </model>
+
+        <model name="Obstaculo_mov3">
+            <pose>6.5 7 0.1 0 0 0</pose>
+            <static>false</static>
+            <include>
+                <uri>model://obstaculo</uri>
+            </include>
+
+            <plugin name="mov_plugin" filename="libmov_plugin.so">
+                <velocity_y>-0.1</velocity_y>
+                <iterations>120000</iterations>
+            </plugin>
+        </model>
+
+        <model name="Obstaculo_mov4">
+            <pose>-8.5 -5 0.1 0 0 0</pose>
+            <static>false</static>
+            <include>
+                <uri>model://obstaculo</uri>
+            </include>
+
+            <plugin name="mov_plugin" filename="libmov_plugin.so">
+                <velocity_y>0.1</velocity_y>
+                <iterations>120000</iterations>
+            </plugin>
+        </model>
 
     </world>
 </sdf>
