@@ -1,0 +1,298 @@
+<?xml version="1.0"?>
+
+<robot name="my_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">    
+    <xacro:include filename="$(find final_project)/urdf/robot.gazebo" />
+
+    <xacro:property name="pi" value="3.14159"/>
+
+    <link name="chassis">
+        <inertial>
+            <mass value="10"/>
+            <origin xyz="0 0 0.3" rpy="0 0 0"/>
+            <inertia ixx="1.5417" ixy="0" ixz="0" iyy="3.467" iyz="0" izz="4.742" />
+        </inertial>
+
+        <visual>
+            <origin xyz="-0.25 -0.5 -0.05" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://final_project/urdf/meshes/Chassis.STL"/>
+            </geometry>
+            <material name="Blue">
+                <color rgba="0.2 0.2 0.4 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.5 1 0.1"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="joint_chassis_left_under_wheel" type="continuous">
+        <origin rpy="0 0 0" xyz="-0.25 -0.25 0" />
+        <child link="left_under_wheel" />
+        <parent link="chassis" />
+        <axis rpy="0 0 0" xyz="1 0 0" />
+        <limit effort="10000" velocity="1000" />
+        <joint_properties damping="1.0" friction="1.0" />
+    </joint>
+
+    <link name="left_under_wheel">
+        <inertial>
+            <mass value="1"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia ixx="1.5417" ixy="0" ixz="0" iyy="3.467" iyz="0" izz="4.742" />
+        </inertial>
+
+        <visual>
+            <origin xyz="-0.12 -0.15 0.15" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <mesh filename="package://final_project/urdf/meshes/Wheel.STL"/>
+            </geometry>
+            <material name="Black">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="-0.1 0 0" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder length="0.04" radius="0.15"/>
+            </geometry>
+        </collision>
+
+        <visual>
+            <origin xyz="-0.04 0 0" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder length="0.08" radius="0.02"/>
+            </geometry>
+            <material name="Black">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="-0.04 0 0" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder length="0.08" radius="0.02"/>
+            </geometry>
+        </collision>
+
+        <visual>
+            <origin xyz="-0.125 0 0" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <box size="0.25 0.005 0.005"/>
+            </geometry>
+            <material name="White">
+                <color rgba="0.8 0.8 0.8 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="joint_chassis_right_under_wheel" type="continuous">
+        <origin rpy="0 0 0" xyz="0.25 -0.25 0" />
+        <child link="right_under_wheel" />
+        <parent link="chassis" />
+        <axis rpy="0 0 0" xyz="1 0 0" />
+        <limit effort="10000" velocity="1000" />
+        <joint_properties damping="1.0" friction="1.0" />
+    </joint>
+
+    <link name="right_under_wheel">
+        <inertial>
+            <mass value="1"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia ixx="1.5417" ixy="0" ixz="0" iyy="3.467" iyz="0" izz="4.742" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0.08 -0.15 0.15" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <mesh filename="package://final_project/urdf/meshes/Wheel.STL"/>
+            </geometry>
+            <material name="Black">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.1 0 0" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder length="0.04" radius="0.15"/>
+            </geometry>
+        </collision>
+
+        <visual>
+            <origin xyz="0.04 0 0" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder length="0.08" radius="0.02"/>
+            </geometry>
+            <material name="Black">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.04 0 0" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder length="0.08" radius="0.02"/>
+            </geometry>
+        </collision>
+
+        <visual>
+            <origin xyz="0.125 0 0" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <box size="0.25 0.005 0.005"/>
+            </geometry>
+            <material name="White">
+                <color rgba="0.8 0.8 0.8 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="joint_chassis_left_upper_wheel" type="continuous">
+        <origin rpy="0 0 0" xyz="-0.25 0.25 0" />
+        <child link="left_upper_wheel" />
+        <parent link="chassis" />
+        <axis rpy="0 0 0" xyz="1 0 0" />
+        <limit effort="10000" velocity="1000" />
+        <joint_properties damping="1.0" friction="1.0" />
+    </joint>
+
+    <link name="left_upper_wheel">
+        <inertial>
+            <mass value="1"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia ixx="1.5417" ixy="0" ixz="0" iyy="3.467" iyz="0" izz="4.742" />
+        </inertial>
+
+        <visual>
+            <origin xyz="-0.12 -0.15 0.15" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <mesh filename="package://final_project/urdf/meshes/Wheel.STL"/>
+            </geometry>
+            <material name="Black">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="-0.1 0 0" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder length="0.04" radius="0.15"/>
+            </geometry>
+        </collision>
+
+        <visual>
+            <origin xyz="-0.04 0 0" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder length="0.08" radius="0.02"/>
+            </geometry>
+            <material name="Black">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="-0.04 0 0" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder length="0.08" radius="0.02"/>
+            </geometry>
+        </collision>
+
+        <visual>
+            <origin xyz="-0.125 0 0" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <box size="0.25 0.005 0.005"/>
+            </geometry>
+            <material name="White">
+                <color rgba="0.8 0.8 0.8 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="joint_chassis_right_upper_wheel" type="continuous">
+        <origin rpy="0 0 0" xyz="0.25 0.25 0" />
+        <child link="right_upper_wheel" />
+        <parent link="chassis" />
+        <axis rpy="0 0 0" xyz="1 0 0" />
+        <limit effort="10000" velocity="1000" />
+        <joint_properties damping="1.0" friction="1.0" />
+    </joint>
+
+    <link name="right_upper_wheel">
+        <inertial>
+            <mass value="1"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia ixx="1.5417" ixy="0" ixz="0" iyy="3.467" iyz="0" izz="4.742" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0.08 -0.15 0.15" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <mesh filename="package://final_project/urdf/meshes/Wheel.STL"/>
+            </geometry>
+            <material name="Black">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.1 0 0" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder length="0.04" radius="0.15"/>
+            </geometry>
+        </collision>
+
+        <visual>
+            <origin xyz="0.04 0 0" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder length="0.08" radius="0.02"/>
+            </geometry>
+            <material name="Black">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0.04 0 0" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <cylinder length="0.08" radius="0.02"/>
+            </geometry>
+        </collision>
+
+        <visual>
+            <origin xyz="0.125 0 0" rpy="0 ${pi/2} 0"/>
+            <geometry>
+                <box size="0.25 0.005 0.005"/>
+            </geometry>
+            <material name="White">
+                <color rgba="0.8 0.8 0.8 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="joint_chassis_laser_sensor" type="fixed">
+        <origin rpy="0 0 0" xyz="0 0.42 0.05" />
+        <child link="laser_sensor" />
+        <parent link="chassis" />
+        <joint_properties damping="1.0" friction="1.0" />
+    </joint>
+
+    <link name="laser_sensor">
+        <inertial>
+            <mass value="0.5"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia ixx="1.5417" ixy="0" ixz="0" iyy="3.467" iyz="0" izz="4.742" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0.04" rpy="0 0 0"/>
+            <geometry>
+                <cylinder length="0.08" radius="0.05"/>
+            </geometry>
+            <material name="Black">
+                <color rgba="0.05 0.05 0.05 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0.04" rpy="0 0 0"/>
+            <geometry>
+                <cylinder length="0.08" radius="0.05"/>
+            </geometry>
+        </collision>
+    </link>
+
+</robot>

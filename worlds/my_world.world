@@ -15,7 +15,7 @@
         <population name="walls_population+x">
             <model name="walls+x">
                 <include>
-                     <pose>0 0 0 0 0 1.5708</pose>
+                    <pose>0 0 0 0 0 1.5708</pose>
                     <static>true</static>
                     <uri>model://grey_wall</uri>
                 </include>
@@ -85,13 +85,13 @@
         <population name="obstaculos_population">
             <model name="obstaculo">
                 <include>
-                    <static>true</static>
+                    <static>false</static>
                     <uri>model://obstaculo</uri>
                 </include>
             </model>
-            <pose>-1 0.8 0 0 0 0</pose>
+            <pose>0 0 0 0 0 0</pose>
             <box>
-                <size>11 11 2</size>
+                <size>11 11 1</size>
             </box>
             <model_count>4</model_count>
             <distribution>
@@ -100,7 +100,7 @@
         </population>
 
         <model name="Obstaculo_mov1">
-            <pose>-7 8.5 0.1 0 0 0</pose>
+            <pose>-5.5 7.5 0 0 0 0</pose>
             <static>false</static>
             <include>
                 <uri>model://obstaculo</uri>
@@ -113,7 +113,7 @@
         </model>
 
         <model name="Obstaculo_mov2">
-            <pose>5 -6.9 0.1 0 0 0</pose>
+            <pose>5.5 -7.5 0 0 0 0</pose>
             <static>false</static>
             <include>
                 <uri>model://obstaculo</uri>
@@ -126,7 +126,7 @@
         </model>
 
         <model name="Obstaculo_mov3">
-            <pose>6.5 7 0.1 0 0 0</pose>
+            <pose>7.5 5.5 0 0 0 0</pose>
             <static>false</static>
             <include>
                 <uri>model://obstaculo</uri>
@@ -139,7 +139,7 @@
         </model>
 
         <model name="Obstaculo_mov4">
-            <pose>-8.5 -5 0.1 0 0 0</pose>
+            <pose>-7.5 -5.5 0 0 0 0</pose>
             <static>false</static>
             <include>
                 <uri>model://obstaculo</uri>

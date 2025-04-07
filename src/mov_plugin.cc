@@ -16,12 +16,12 @@ public:
         this->iterations = _sdf->Get<int>("iterations");
     }
 
-    this->velocity_x = 0;
+    this->velocity_x = 0.0;
     if (_sdf->HasElement("velocity_x")) {
         this->velocity_x = _sdf->Get<float>("velocity_x");
     }
 
-    this->velocity_y = 0;
+    this->velocity_y = 0.0;
     if (_sdf->HasElement("velocity_y")) {
         this->velocity_y = _sdf->Get<float>("velocity_y");
     }
@@ -38,12 +38,12 @@ public:
     // Apply a small linear velocity to the model.
 
     if (this->counter < this->iterations) {
-        this->model->SetLinearVel(ignition::math::Vector3d(this->velocity_x, this->velocity_y, 0));
-        this->model->SetAngularVel(ignition::math::Vector3d(0, 0, 0));
+        this->model->SetLinearVel(ignition::math::Vector3d(this->velocity_x, this->velocity_y, 0.0));
+        this->model->SetAngularVel(ignition::math::Vector3d(0.0, 0.0, 0.0));
     }
     else if (this->counter < 2*this->iterations){
-        this->model->SetLinearVel(ignition::math::Vector3d(-this->velocity_x, -this->velocity_y, 0));
-        this->model->SetAngularVel(ignition::math::Vector3d(0, 0, 0));
+        this->model->SetLinearVel(ignition::math::Vector3d(-this->velocity_x, -this->velocity_y, 0.0));
+        this->model->SetAngularVel(ignition::math::Vector3d(0.0, 0.0, 0.0));
     }else{
         this->counter = 0;
     }
