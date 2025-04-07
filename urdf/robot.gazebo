@@ -1,27 +1,45 @@
 <?xml version="8.0"?>
-<robot>
+<robot> 
+    <gazebo>
+        <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+            <updateRate>100.0</updateRate>
+            <robotNamespace>/</robotNamespace>
+            <leftFrontJoint>joint_chassis_left_under_wheel</leftFrontJoint>
+            <rightFrontJoint>joint_chassis_right_under_wheel</rightFrontJoint>
+            <leftRearJoint>joint_chassis_left_upper_wheel</leftRearJoint>
+            <rightRearJoint>joint_chassis_right_upper_wheel</rightRearJoint>
+            <wheelSeparation>0.2</wheelSeparation>
+            <wheelDiameter>0.3</wheelDiameter>
+            <robotBaseFrame>chassis</robotBaseFrame>
+            <torque>5</torque>
+            <commandTopic>cmd_vel</commandTopic>
+            <odometryTopic>odom</odometryTopic>
+            <broadcastTF>false</broadcastTF>
+        </plugin>
+    </gazebo>
+
     <gazebo reference="chassis">
         <material>Gazebo/Blue</material>
     </gazebo>
 
     <gazebo reference="left_under_wheel">
-        <mu1>0.8</mu1>
-        <mu2>0.8</mu2>
+        <mu1>0.6</mu1>
+        <mu2>0.6</mu2>
         <material>Gazebo/Black</material>
     </gazebo>
     <gazebo reference="right_under_wheel">
-        <mu1>0.8</mu1>
-        <mu2>0.8</mu2>
+        <mu1>0.6</mu1>
+        <mu2>0.6</mu2>
         <material>Gazebo/Black</material>
     </gazebo>
     <gazebo reference="left_upper_wheel">
-        <mu1>0.8</mu1>
-        <mu2>0.8</mu2>
+        <mu1>0.6</mu1>
+        <mu2>0.6</mu2>
         <material>Gazebo/Black</material>
     </gazebo>
     <gazebo reference="right_upper_wheel">
-        <mu1>0.8</mu1>
-        <mu2>0.8</mu2>
+        <mu1>0.6</mu1>
+        <mu2>0.6</mu2>
         <material>Gazebo/Black</material>
     </gazebo>
 
